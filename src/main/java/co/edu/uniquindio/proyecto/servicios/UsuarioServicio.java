@@ -1,7 +1,8 @@
 package co.edu.uniquindio.proyecto.servicios;
 
 import co.edu.uniquindio.proyecto.dto.UsuarioDTO;
-//import co.edu.uniquindio.proyecto.modelo.Usuario;
+//import co.edu.uniquindio.proyecto.modelo.entidades.Usuario;
+
 
 public interface UsuarioServicio {
 
