@@ -1,15 +1,13 @@
 package co.edu.uniquindio.proyecto.modelo.entidades;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -26,7 +24,7 @@ public class ProductoModerador implements Serializable {
     private String motivo;
 
     @DateTimeFormat //preguntar
-    private Date fecha;
+    private LocalDate fecha;
 
     @ManyToOne
     private Producto producto;
@@ -34,7 +32,6 @@ public class ProductoModerador implements Serializable {
     @ManyToOne
     private Moderador moderador;
 
-    @ManyToOne
     private Estado estado;
 
 

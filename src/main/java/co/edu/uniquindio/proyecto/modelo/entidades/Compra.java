@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -21,12 +22,12 @@ public class Compra implements Serializable {
     private Integer codigo;
 
     @DateTimeFormat //preguntar
-    private Date fecha_creacion;
+    private LocalDateTime fecha_creacion;
 
     private Float valor_total;
 
-    @Column(nullable = false, length = 50)
-    private String metodo_pago;
+    @Column(nullable = false)
+    private MetodoPago metodo_pago;
 
     @ManyToOne
     private Usuario usuario;

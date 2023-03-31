@@ -20,9 +20,11 @@ public class Producto implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY) //autoincrementable codigo
     private int codigo;
 
-    private boolean estado; //preguntar
+    private Estado estado; //preguntar
 
     private LocalDateTime fechaLimite;
+
+    private LocalDateTime fechaCreacion;
 
     private String nombre;
 
@@ -32,12 +34,10 @@ public class Producto implements Serializable {
 
     private float precio;
 
-    private int codigoVendedor;
+    @ElementCollection
+    private List<String> imagenes;
 
-    @OneToMany (mappedBy = "codigo_producto") //PREGUNTA!!! STRING O IMAGEN
-    private List<Imagen> imagenes;
-
-    @OneToMany (mappedBy = "codigo_producto")
+    @ElementCollection
     private List<Categoria> categorias;
 
     @OneToMany (mappedBy = "producto")

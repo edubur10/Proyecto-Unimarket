@@ -1,4 +1,4 @@
-package co.edu.uniquindio.proyecto.servicios;
+package co.edu.uniquindio.proyecto.servicios.interfaces;
 
 import co.edu.uniquindio.proyecto.dto.ProductoDTO;
 import co.edu.uniquindio.proyecto.dto.ProductoGetDTO;
@@ -10,17 +10,17 @@ import java.util.List;
 public interface ProductoServicio {
 
 
-    int crearProducto(ProductoDTO productoDTO);
+    int crearProducto(ProductoDTO productoDTO)  throws Exception;
 
-    int actualizarProducto(int codigoProducto, ProductoDTO productoDTO);
+    int actualizarProducto(int codigoProducto, ProductoDTO productoDTO)  throws Exception;
 
-    int actualizarUnidades(int codigoProducto, int unidades);
+    int actualizarUnidades(int codigoProducto, int unidades) throws Exception;
 
-    int actualizarEstado(int codigoProducto, Estado estado);
+    int actualizarEstado(int codigoProducto, Estado estado) throws Exception;
 
-    int eliminarProducto(int codigoProducto);
+    int eliminarProducto(int codigoProducto) throws Exception;
 
-    ProductoGetDTO obtenerProducto(int codigoProducto);
+    ProductoGetDTO obtenerProducto(int codigoProducto) throws Exception;
 
     List<ProductoGetDTO> listarProductosUsuario(int codigoUsuario);
 

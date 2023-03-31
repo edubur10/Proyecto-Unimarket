@@ -10,19 +10,10 @@ import lombok.Setter;
 import java.io.Serializable;
 import java.util.List;
 
-@Entity
-@Getter
-@Setter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Estado implements Serializable {
+public enum Estado {
 
-    @Id
-    @EqualsAndHashCode.Include
-    private Integer codigo;
-
-    private String nombre;
-
-    @OneToMany(mappedBy = "estado")
-    private List<ProductoModerador> productoModeradors;
+    APROBADO,
+    RECHAZADO,
+    SIN_REVISAR
 
 }
