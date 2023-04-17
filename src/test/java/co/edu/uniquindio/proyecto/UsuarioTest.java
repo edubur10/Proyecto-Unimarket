@@ -1,13 +1,16 @@
 package co.edu.uniquindio.proyecto;
 
-import co.edu.uniquindio.unimarket.dto.UsuarioDTO;
-import co.edu.uniquindio.unimarket.dto.UsuarioGetDTO;
-import co.edu.uniquindio.unimarket.servicios.interfaces.UsuarioServicio;
+import co.edu.uniquindio.proyecto.dto.UsuarioDTO;
+import co.edu.uniquindio.proyecto.dto.UsuarioGetDTO;
+import co.edu.uniquindio.proyecto.servicios.interfaces.UsuarioServicio;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootTest
 @Transactional
@@ -19,13 +22,16 @@ public class UsuarioTest {
     @Test
     public void crearUsuarioTest() throws Exception{
 
+        List<String> telefonos = new ArrayList<>();
+        telefonos.add("3225247458");
+
         //Se crea el usuario con el servicio de crearUsuario
         UsuarioDTO usuarioDTO = new UsuarioDTO(
                 "Pepito 1",
                 "pepe1@email.com",
                 "1234",
                 "Calle 123",
-                "343");
+                telefonos);
 
         int codigo = usuarioServicio.crearUsuario(usuarioDTO);
 
@@ -37,13 +43,16 @@ public class UsuarioTest {
     @Test
     public void eliminarUsuarioTest() throws Exception{
 
+        List<String> telefonos = new ArrayList<>();
+        telefonos.add("3225247458");
+
         //Para eliminar el usuario primero se debe crear
         UsuarioDTO usuarioDTO = new UsuarioDTO(
                 "Pepito 1",
                 "pepe1@email.com",
                 "1234",
                 "Calle 123",
-                "343");
+                telefonos);
 
         int codigo = usuarioServicio.crearUsuario(usuarioDTO);
 
@@ -59,18 +68,21 @@ public class UsuarioTest {
     @Test
     public void actualizarUsuarioTest() throws Exception{
 
+        List<String> telefonos = new ArrayList<>();
+        telefonos.add("3225247458");
+
         //Para actualizar el usuario primero se debe crear
         UsuarioDTO usuarioDTO = new UsuarioDTO(
                 "Pepito 1",
                 "pepe1@email.com",
                 "1234",
                 "Calle 123",
-                "343");
+                telefonos);
 
         int codigoNuevo = usuarioServicio.crearUsuario(usuarioDTO);
 
         //El servicio de actualizar nos retorna el usuario
-        UsuarioGetDTO usuarioActualizado = usuarioServicio.actualizarUsuario(codigoNuevo, new UsuarioDTO("Pepito Perez", "pepe1@email.com", "1234", "Calle 123", "1111"));
+        UsuarioGetDTO usuarioActualizado = usuarioServicio.actualizarUsuario(codigoNuevo, new UsuarioDTO("Pepito Perez", "pepe1@email.com", "1234", "Calle 123",telefonos));
 
         //Se comprueba que ahora el teléfono del usuario no es el que se usó cuando se creó inicialmente
         Assertions.assertNotEquals("2782", usuarioActualizado.getTelefono());
@@ -79,6 +91,8 @@ public class UsuarioTest {
 
     @Test
     public void obtenerUsuarioTest()throws Exception{
+        List<String> telefonos = new ArrayList<>();
+        telefonos.add("3225247458");
 
         //Para obtener el usuario primero se debe crear
         UsuarioDTO usuarioDTO = new UsuarioDTO(
@@ -86,7 +100,7 @@ public class UsuarioTest {
                 "pepe1@email.com",
                 "1234",
                 "Calle 123",
-                "343");
+                telefonos);
 
         int codigoNuevo = usuarioServicio.crearUsuario(usuarioDTO);
 

@@ -1,9 +1,7 @@
 package co.edu.uniquindio.proyecto.modelo.entidades;
 
 import com.sun.jdi.PrimitiveValue;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -19,6 +17,7 @@ public class Persona implements Serializable {
 
     @Id
     @EqualsAndHashCode.Include
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //autoincrementable codigo
     private Integer codigo;
 
     @Column(nullable = false, length = 100)

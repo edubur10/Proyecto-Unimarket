@@ -14,9 +14,10 @@ import java.util.List;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Usuario extends Persona{
 
-    @Id
-    @EqualsAndHashCode.Include
-    private Integer codigo;
+    //@Id
+    //@EqualsAndHashCode.Include
+    //@GeneratedValue(strategy = GenerationType.IDENTITY) //autoincrementable codigo
+    //private Integer codigo;
 
     @Column(nullable = false, length = 50)
     private String direccion;
