@@ -72,7 +72,6 @@ public class ProductoTest {
     }
 
     @Test
-    //@Sql("classpath:producto.sql")
     public void listarProductosTestSql(){
 
         //se guardan los datos del sql en una lista
@@ -84,27 +83,24 @@ public class ProductoTest {
         }
     }
 
-    /*
+
     @Test
-    //@Sql("classpath:dataset.sql")
+    @Sql("classpath:dataset.sql")
     public void actualizarUsuarioTest() throws Exception {
         ProductoGetDTO producto = productoServicio.obtenerProducto(1);
         producto.setPrecio(7522114);
 
-        try{
+        productoServicio.actualizarProducto(1, producto);
 
-            ProductoGetDTO actualizada = productoServicio.actualizarProducto(1);
-            Assertions.assertEquals(7522114, producto.getPrecio());
+        ProductoGetDTO producto1 = productoServicio.obtenerProducto(1);
 
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+        Assertions.assertEquals(7522114, producto1.getPrecio());
+
     }
 
-     */
+
 
     @Test
-    //@Sql("classpath:dataset.sql")
     public void eliminarReservaTest()throws Exception{
         try{
 
