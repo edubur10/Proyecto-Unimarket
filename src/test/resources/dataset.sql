@@ -1,0 +1,1 @@
+insert into persona values ("juan", "juan@gmail.com", "1234")

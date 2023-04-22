@@ -37,4 +37,7 @@ public class Usuario extends Persona{
     @OneToMany(mappedBy = "usuario")
     private List<Compra> compras;
 
+    @ManyToOne
+    private Producto producto;
+
 }

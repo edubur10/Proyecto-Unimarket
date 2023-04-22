@@ -104,6 +104,8 @@ public class ProductoServicioImpl implements ProductoServicio {
 
     }
 
+
+
     @Override
     public void eliminarFavorito(int codigoUsuario, int codigoProducto) throws Exception
     {
