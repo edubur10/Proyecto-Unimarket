@@ -54,24 +54,4 @@ public class Producto implements Serializable {
     @OneToMany(mappedBy = "producto")
     private List<DetalleCompra> detalleCompras;
 
-    @Builder
-    public Producto(Estado estado, LocalDateTime fechaLimite, LocalDateTime fechaCreacion,
-                    String nombre, String descripcion, int unidades, float precio, List<String> imagenes,
-                    List<Categoria> categorias, List<Comentario> comentarios, List<ProductoModerador> productoModeradors,
-                    List<Usuario> favoritos, Usuario usuario, List<DetalleCompra> detalleCompras) {
-        this.estado = estado;
-        this.fechaLimite = fechaLimite;
-        this.fechaCreacion = LocalDateTime.now();
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.unidades = unidades;
-        this.precio = precio;
-        this.imagenes = imagenes;
-        this.categorias = categorias;
-        this.comentarios = comentarios;
-        this.productoModeradors = productoModeradors;
-        this.favoritos = favoritos;
-        this.usuario = usuario;
-        this.detalleCompras = detalleCompras;
-    }
 }

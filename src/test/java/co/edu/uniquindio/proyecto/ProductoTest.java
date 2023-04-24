@@ -83,7 +83,6 @@ public class ProductoTest {
         }
     }
 
-
     @Test
     public void actualizarUsuarioTest() throws Exception {
         ProductoGetDTO producto = productoServicio.obtenerProducto(1);
@@ -96,8 +95,6 @@ public class ProductoTest {
         Assertions.assertEquals(7522114, producto1.getPrecio());
 
     }
-
-
 
     @Test
     public void eliminarProductoTest()throws Exception{

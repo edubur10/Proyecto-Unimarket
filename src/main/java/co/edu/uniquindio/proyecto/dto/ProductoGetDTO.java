@@ -4,6 +4,7 @@ import co.edu.uniquindio.proyecto.modelo.entidades.Categoria;
 import co.edu.uniquindio.proyecto.modelo.entidades.Estado;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class ProductoGetDTO {
@@ -28,10 +30,9 @@ public class ProductoGetDTO {
     private int unidades;
 
     private float precio;
-
-    private int codigoVendedor;
-
     private List<String> imagenes;
 
     private List<Categoria> categorias;
+
+
 }
