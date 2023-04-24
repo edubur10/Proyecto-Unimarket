@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 public class CompraGetDTO {
 
-    private int codigo;
+    private Integer codigo;
 
     private LocalDateTime fecha;
 

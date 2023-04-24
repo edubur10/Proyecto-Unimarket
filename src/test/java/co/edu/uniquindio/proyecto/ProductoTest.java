@@ -83,7 +83,6 @@ public class ProductoTest {
         }
     }
 
-
     @Test
     @Sql("classpath:dataset.sql")
     public void actualizarUsuarioTest() throws Exception {
@@ -97,8 +96,6 @@ public class ProductoTest {
         Assertions.assertEquals(7522114, producto1.getPrecio());
 
     }
-
-
 
     @Test
     public void eliminarReservaTest()throws Exception{

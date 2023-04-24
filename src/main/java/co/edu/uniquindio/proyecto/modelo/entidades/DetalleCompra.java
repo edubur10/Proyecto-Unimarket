@@ -27,7 +27,7 @@ public class DetalleCompra implements Serializable {
 
     @Positive
     @Column(nullable = false)
-    private String precio_producto;
+    private float precio_producto;
 
     @ManyToOne
     private Compra compra;
