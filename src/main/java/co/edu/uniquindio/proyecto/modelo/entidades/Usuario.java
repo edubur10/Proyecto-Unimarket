@@ -12,15 +12,12 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Usuario extends Persona{
+public class Usuario extends Persona implements Serializable{
 
 
     @Column(nullable = false, length = 50)
     private String direccion;
 
-    @Positive
     @Column(length = 10, nullable = false)
     @ElementCollection
     private List<String> telefono;

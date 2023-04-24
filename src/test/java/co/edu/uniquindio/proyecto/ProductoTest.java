@@ -85,7 +85,6 @@ public class ProductoTest {
 
 
     @Test
-    @Sql("classpath:dataset.sql")
     public void actualizarUsuarioTest() throws Exception {
         ProductoGetDTO producto = productoServicio.obtenerProducto(1);
         producto.setPrecio(7522114);
@@ -101,7 +100,7 @@ public class ProductoTest {
 
 
     @Test
-    public void eliminarReservaTest()throws Exception{
+    public void eliminarProductoTest()throws Exception{
         try{
 
             productoServicio.eliminarProducto(2);

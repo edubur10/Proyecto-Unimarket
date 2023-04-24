@@ -74,7 +74,7 @@ public class UsuarioTest {
         //Para actualizar el usuario primero se debe crear
         UsuarioDTO usuarioDTO = new UsuarioDTO(
                 "Pepito 1",
-                "pepe1@email.com",
+                "pepe5@email.com",
                 "1234",
                 "Calle 123",
                 telefonos);
