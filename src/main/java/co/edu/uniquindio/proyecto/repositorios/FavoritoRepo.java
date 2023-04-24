@@ -13,9 +13,9 @@ import java.util.Optional;
 
 @Repository
 public interface FavoritoRepo extends JpaRepository<Favorito, Integer> {
-    @Query("SELECT f FROM Favorito f WHERE f.usuario = :usuario")
-    List<Favorito> listarFavoritosPorUser(@Param("usuario") Usuario usuario);
+    @Query("SELECT f FROM Favorito f WHERE f.usuario.codigo = :codigoUsuario")
+    List<Favorito> listarFavoritosPorUser(int codigoUsuario);
 
     @Query("SELECT f FROM Favorito f WHERE f.producto = :producto AND f.usuario = :usuario")
-    Optional<Favorito> listarFavoritosPorProductAndUser(@Param("producto") Producto producto, @Param("usuario") Usuario usuario);
+    Optional<Favorito> listarFavoritosPorProductAndUser(Producto producto, Usuario usuario);
 }

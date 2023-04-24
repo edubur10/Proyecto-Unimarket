@@ -1,6 +1,7 @@
 package co.edu.uniquindio.proyecto.servicios.implementacion;
 
 import co.edu.uniquindio.proyecto.dto.FavoritoDTO;
+import co.edu.uniquindio.proyecto.dto.UsuarioDTO;
 import co.edu.uniquindio.proyecto.modelo.entidades.Favorito;
 import co.edu.uniquindio.proyecto.modelo.entidades.Producto;
 import co.edu.uniquindio.proyecto.modelo.entidades.Usuario;
@@ -17,8 +18,8 @@ public class FavoritoServiceImpl implements FavoritoService {
     private FavoritoRepo favoritoRepo;
 
     @Override
-    public List<FavoritoDTO> listarFavoritosPorUser(Usuario usuario) {
-        List<Favorito> favoritos = favoritoRepo.listarFavoritosPorUser(usuario);
+    public List<FavoritoDTO> listarFavoritosPorUser(int codigoUser) {
+        List<Favorito> favoritos = favoritoRepo.listarFavoritosPorUser(codigoUser);
         List<FavoritoDTO> favoritosDTO = new ArrayList<>();
 
         for (Favorito favorito : favoritos) {
@@ -26,6 +27,7 @@ public class FavoritoServiceImpl implements FavoritoService {
                     favorito.getProducto().getCodigo(),
                     favorito.getProducto().getNombre(),
                     favorito.getProducto().getDescripcion(),
+                    favorito.getProducto().getUsuario().getCodigo()
             ));
         }
 
@@ -39,12 +41,10 @@ public class FavoritoServiceImpl implements FavoritoService {
         if (favorito.isPresent()) {
             Favorito f = favorito.get();
             return new FavoritoDTO(
-                    f.getProducto().getEstado(),
-                    f.getProducto().getFechaLimite(),
-                    f.getProducto().getFechaCreacion(),
+                    f.getProducto().getCodigo(),
                     f.getProducto().getNombre(),
-                    f.getUsuario().get,
-                    ,
+                    f.getProducto().getDescripcion(),
+                    f.getProducto().getUsuario().getCodigo()
             );
         }
 

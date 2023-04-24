@@ -2,10 +2,7 @@ package co.edu.uniquindio.proyecto.servicios.implementacion;
 
 import co.edu.uniquindio.proyecto.dto.ProductoDTO;
 import co.edu.uniquindio.proyecto.dto.ProductoGetDTO;
-import co.edu.uniquindio.proyecto.modelo.entidades.Categoria;
-import co.edu.uniquindio.proyecto.modelo.entidades.Estado;
-import co.edu.uniquindio.proyecto.modelo.entidades.Producto;
-import co.edu.uniquindio.proyecto.modelo.entidades.Usuario;
+import co.edu.uniquindio.proyecto.modelo.entidades.*;
 import co.edu.uniquindio.proyecto.repositorios.ProductoRepo;
 import co.edu.uniquindio.proyecto.servicios.interfaces.ProductoServicio;
 import co.edu.uniquindio.proyecto.servicios.interfaces.UsuarioServicio;
@@ -100,7 +97,7 @@ public class ProductoServicioImpl implements ProductoServicio {
         Usuario usuario = usuarioServicio.obtener(codigoUsuario);
         Producto producto = obtener(codigoProducto);
 
-        usuario.getFavoritos().add(producto);
+        usuario.getFavoritos().add( new Favorito(producto, usuario));
 
     }
 
@@ -160,7 +157,6 @@ public class ProductoServicioImpl implements ProductoServicio {
                 producto.getDescripcion(),
                 producto.getUnidades(),
                 producto.getPrecio(),
-                producto.getUsuario().getCodigo(),
                 producto.getImagenes(),
                 producto.getCategorias()
         );

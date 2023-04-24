@@ -26,15 +26,15 @@ public class Usuario extends Persona implements Serializable{
     private List<Comentario> comentarios;
 
     @OneToMany(mappedBy = "usuario")
-    private List<Producto> favoritos;
-
-    @OneToMany(mappedBy = "usuario")
     private List<Producto> productos;
 
     @OneToMany(mappedBy = "usuario")
     private List<Compra> compras;
 
-    @ManyToOne
-    private Producto producto;
+    @OneToMany(mappedBy = "usuario")
+    private List<Favorito> favoritos;
+
+    //@ManyToOne
+    //private Producto producto;
 
 }

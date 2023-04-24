@@ -9,7 +9,7 @@ import co.edu.uniquindio.proyecto.modelo.entidades.Usuario;
 import java.util.List;
 
 public interface FavoritoService {
-    List<FavoritoDTO> listarFavoritosPorUser(UsuarioDTO usuario);
+    List<FavoritoDTO> listarFavoritosPorUser(int codigoUser );
     FavoritoDTO listarFavoritosPorProductAndUser(Producto producto, Usuario usuario);
 
 }
