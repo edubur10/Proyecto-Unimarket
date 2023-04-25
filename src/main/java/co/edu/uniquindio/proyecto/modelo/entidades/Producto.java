@@ -34,6 +34,8 @@ public class Producto implements Serializable {
 
     private float precio;
 
+    private Integer calificacion;
+
     @ElementCollection
     private List<String> imagenes;
 
