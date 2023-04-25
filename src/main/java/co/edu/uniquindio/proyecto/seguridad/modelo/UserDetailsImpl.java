@@ -1,6 +1,6 @@
 package co.edu.uniquindio.proyecto.seguridad.modelo;
-import co.edu.uniquindio.proyecto.modelo.entidades.Persona;
 import co.edu.uniquindio.proyecto.modelo.entidades.Moderador;
+import co.edu.uniquindio.proyecto.modelo.entidades.Persona;
 import co.edu.uniquindio.proyecto.modelo.entidades.Usuario;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
