@@ -21,9 +21,6 @@ import java.util.List;
 @SpringBootTest
 @Transactional
 public class ProductoTest {
-
-    @Autowired
-    private ProductoRepo miProductoRepo;
     @Autowired
     private ProductoServicio productoServicio;
 
@@ -75,7 +72,7 @@ public class ProductoTest {
     public void listarProductosTestSql(){
 
         //se guardan los datos del sql en una lista
-        List<ProductoGetDTO> listaProductos=productoServicio.listarProductosNombre("Computador Asus 1");
+        List<ProductoGetDTO> listaProductos=productoServicio.listarProductosNombre("portatil");
 
         //el for se usa para mostrar los datos guardados en la lista
         for (ProductoGetDTO misProductos: listaProductos) {
@@ -84,13 +81,13 @@ public class ProductoTest {
     }
 
     @Test
-    public void actualizarUsuarioTest() throws Exception {
+    public void actualizarTest() throws Exception {
         ProductoGetDTO producto = productoServicio.obtenerProducto(101);
         producto.setPrecio(7522114);
 
-        productoServicio.actualizarProducto(1, producto);
+        productoServicio.actualizarProducto(101, producto);
 
-        ProductoGetDTO producto1 = productoServicio.obtenerProducto(1);
+        ProductoGetDTO producto1 = productoServicio.obtenerProducto(101);
 
         Assertions.assertEquals(7522114, producto1.getPrecio());
 

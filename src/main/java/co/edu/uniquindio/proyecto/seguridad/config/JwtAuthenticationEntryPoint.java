@@ -14,6 +14,9 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response,
                          AuthenticationException authException) throws IOException, ServletException {
+
+        System.out.println(authException.getMessage());
+
         MensajeDTO<String> dto = new MensajeDTO<>(HttpStatus.UNAUTHORIZED, true, "Token no encontrado o inválido");
                 response.setContentType("application/json");
         response.setStatus(dto.getEstado().value());

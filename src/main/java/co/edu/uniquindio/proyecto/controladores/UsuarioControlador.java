@@ -17,12 +17,6 @@ public class UsuarioControlador {
 
     private final UsuarioServicio usuarioServicio;
 
-    @PostMapping("/crear")
-    public ResponseEntity<MensajeDTO> crearUsuario(@Valid @RequestBody UsuarioDTO usuarioDTO) throws Exception {
-        return ResponseEntity.status(200).body(new MensajeDTO(HttpStatus.OK,
-                false, "Usuario creado exitosamente! Código: " + usuarioServicio.crearUsuario(usuarioDTO)));
-    }
-
     @PutMapping("/actualizar/{codigoUsuario}")
     public ResponseEntity<MensajeDTO> actualizarUsuario(@PathVariable int codigoUsuario, @RequestBody UsuarioDTO usuarioDTO) throws Exception {
         return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, usuarioServicio.actualizarUsuario(codigoUsuario, usuarioDTO)));

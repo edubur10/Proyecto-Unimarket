@@ -36,7 +36,5 @@ public class UsuarioDTO {
     private String direccion;
 
     @NotNull
-    @NotBlank
-    @Length(max = 12, message = "El teléfono debe tener máximo 12 caracteres")
     private List<String> telefono;
 }

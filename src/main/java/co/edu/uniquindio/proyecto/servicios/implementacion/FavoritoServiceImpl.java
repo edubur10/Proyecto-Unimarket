@@ -45,6 +45,7 @@ public class FavoritoServiceImpl implements FavoritoService {
                         favorito.getProducto().getNombre(),
                         favorito.getProducto().getDescripcion(),
                         favorito.getProducto().getUnidades(),
+                        favorito.getProducto().getUsuario().getCodigo(),
                         favorito.getProducto().getPrecio(),
                         favorito.getProducto().getImagenes(),
                         favorito.getProducto().getCategorias()
@@ -78,6 +79,7 @@ public class FavoritoServiceImpl implements FavoritoService {
                         favorito.getProducto().getNombre(),
                         favorito.getProducto().getDescripcion(),
                         favorito.getProducto().getUnidades(),
+                        favorito.getProducto().getUsuario().getCodigo(),
                         favorito.getProducto().getPrecio(),
                         favorito.getProducto().getImagenes(),
                         favorito.getProducto().getCategorias()

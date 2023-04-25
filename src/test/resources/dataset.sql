@@ -1,23 +1,23 @@
 # MODERADOR (codigo, Email, Nombre, Password)
-insert into moderador values (1, "pedrog@gmail.com", "Pedro Gomez","12345");
-insert into moderador values (2, "linac@gmail.com", "Lina Caicedo","78854");
-insert into moderador values (3, "estebans@gmail.com", "Esteban Sanchez","974631");
-insert into moderador values (4, "gabriela@gmail.com", "Gabriela Erazo","255847");
-insert into moderador values (5, "diegor@gmail.com", "Diego Rodriguez","789853");
+insert into moderador values (1, "pedrog@gmail.com", "Pedro Gomez","$2a$10$7Y.di/zHO3xnRhWUCKwQhObLuBydSA01fy5q9Iilt/2AP39JaSKXa");
+insert into moderador values (2, "linac@gmail.com", "Lina Caicedo","$2a$10$7Y.di/zHO3xnRhWUCKwQhObLuBydSA01fy5q9Iilt/2AP39JaSKXa");
+insert into moderador values (3, "estebans@gmail.com", "Esteban Sanchez","$2a$10$7Y.di/zHO3xnRhWUCKwQhObLuBydSA01fy5q9Iilt/2AP39JaSKXa");
+insert into moderador values (4, "gabriela@gmail.com", "Gabriela Erazo","$2a$10$7Y.di/zHO3xnRhWUCKwQhObLuBydSA01fy5q9Iilt/2AP39JaSKXa");
+insert into moderador values (5, "diegor@gmail.com", "Diego Rodriguez","$2a$10$7Y.di/zHO3xnRhWUCKwQhObLuBydSA01fy5q9Iilt/2AP39JaSKXa");
 
 # Usuario (Codigo, Email, Nombre, Password, dirección, Producto_Codigo)
-insert into usuario values (1,"juanp@gmail.com","Juan Perez","1234","calle 11 # 16-71");
-insert into usuario values (2,"luisg@gmail.com","Luis Gonzales","54879","calle 15 # 75-22");
-insert into usuario values (3,"julianah@gmail.com","Juliana Huertas","1303","calle 57 41-30");
-insert into usuario values (4,"camilal@gmail.com","Camila Leal","1605","calle 30 20-51");
-insert into usuario values (5,"nicolj@gmail.com","Nicol Jimenez","1311","calle 50");
+insert into usuario values (1,"juanp@gmail.com","Juan Perez","$2a$10$7Y.di/zHO3xnRhWUCKwQhObLuBydSA01fy5q9Iilt/2AP39JaSKXa","calle 11 # 16-71");
+insert into usuario values (2,"luisg@gmail.com","Luis Gonzales","$2a$10$7Y.di/zHO3xnRhWUCKwQhObLuBydSA01fy5q9Iilt/2AP39JaSKXa","calle 15 # 75-22");
+insert into usuario values (3,"julianah@gmail.com","Juliana Huertas","$2a$10$7Y.di/zHO3xnRhWUCKwQhObLuBydSA01fy5q9Iilt/2AP39JaSKXa","calle 57 41-30");
+insert into usuario values (4,"camilal@gmail.com","Camila Leal","$2a$10$7Y.di/zHO3xnRhWUCKwQhObLuBydSA01fy5q9Iilt/2AP39JaSKXa","calle 30 20-51");
+insert into usuario values (5,"nicolj@gmail.com","Nicol Jimenez","$2a$10$7Y.di/zHO3xnRhWUCKwQhObLuBydSA01fy5q9Iilt/2AP39JaSKXa","calle 50");
 
 # Producto (Codigo, Descripción, Estado: 1.Aprobado, 2.Rechazado, 3.Sin revisar, Fecha de creación, Fecha limite, Nombre, Precio, Unidades, Usuario_Codigo)
-insert into producto values (101, "telefono con 4 gb de ram", 2, "2023-04-22", "2023-10-22", "Samsumg a12", 560000.0, 2, 1);
-insert into producto values (102, "computador asus vivobook 14", 1, "2023-01-15", "2023-06-15", "computador portatil", 2600000.0, 5, 3);
-insert into producto values (103, "comedor de seis puestos", 3, "2023-03-13", "2023-09-13", "comedor familiar", 1500000.0, 1, 4);
-insert into producto values (104, "camisetas diesel", 3, "2023-02-17", "2023-08-17", "camisetas para hombre", 200000.0, 10, 2);
-insert into producto values (105, "estuche para celular", 1, "2023-05-16", "2023-11-16", "forro celulares", 25000.0, 26, 5);
+insert into producto values (101, "telefono con 4 gb de ram", 1, "2023-04-22", "2023-10-22", "Samsumg a12", 560000.0, 2, 1);
+insert into producto values (102, "computador asus vivobook 14", 0, "2023-01-15", "2023-06-15", "computador portatil", 2600000.0, 5, 3);
+insert into producto values (103, "comedor de seis puestos", 2, "2023-03-13", "2023-09-13", "comedor familiar", 1500000.0, 1, 4);
+insert into producto values (104, "camisetas diesel", 2, "2023-02-17", "2023-08-17", "camisetas para hombre", 200000.0, 10, 2);
+insert into producto values (105, "estuche para celular", 0, "2023-05-16", "2023-11-16", "forro celulares", 25000.0, 26, 5);
 
 
 # Comentario (Codigo, Fecha, Mnesaje, Producto_Codigo, Usuario_Codigo)

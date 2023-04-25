@@ -156,6 +156,7 @@ public class ProductoServicioImpl implements ProductoServicio {
                 producto.getNombre(),
                 producto.getDescripcion(),
                 producto.getUnidades(),
+                producto.getUsuario().getCodigo(),
                 producto.getPrecio(),
                 producto.getImagenes(),
                 producto.getCategorias()
@@ -174,7 +175,7 @@ public class ProductoServicioImpl implements ProductoServicio {
         producto.setPrecio( productoDTO.getPrecio() );
         producto.setImagenes( productoDTO.getImagenes() );
         producto.setCategorias( productoDTO.getCategorias());
-        producto.setUsuario( usuarioServicio.obtener( productoDTO.getCodigo() ) );
+        producto.setUsuario( usuarioServicio.obtener( productoDTO.getCodigoUsuario() ) );
         producto.setFechaLimite( productoDTO.getFechaLimite() );
         producto.setEstado( productoDTO.getEstado() );
 

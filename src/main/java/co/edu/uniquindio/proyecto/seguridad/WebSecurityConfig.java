@@ -26,7 +26,7 @@ public class WebSecurityConfig {
         http.csrf().disable();
         http.cors();
         http.authorizeHttpRequests()
-                .requestMatchers("/api/auth/**").permitAll()
+                .requestMatchers("/api/sesion/**").permitAll()
                 .anyRequest().authenticated();
         http.exceptionHandling().authenticationEntryPoint(jwtEntryPoint);
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

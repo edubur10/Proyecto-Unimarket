@@ -2,10 +2,7 @@ package co.edu.uniquindio.proyecto.dto;
 
 import co.edu.uniquindio.proyecto.modelo.entidades.Categoria;
 import co.edu.uniquindio.proyecto.modelo.entidades.Estado;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -15,6 +12,7 @@ import java.util.Map;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 public class ProductoGetDTO {
 
     private int codigo;
@@ -28,6 +26,8 @@ public class ProductoGetDTO {
     private String descripcion;
 
     private int unidades;
+
+    private int codigoUsuario;
 
     private float precio;
     private List<String> imagenes;
