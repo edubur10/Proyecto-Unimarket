@@ -9,7 +9,6 @@ import lombok.Setter;
 
 import java.io.Serializable;
 
-@Entity
 @Setter
 @Getter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)

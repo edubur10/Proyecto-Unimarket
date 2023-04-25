@@ -25,7 +25,7 @@ public class FavoritoServiceImpl implements FavoritoService {
             favoritosDTO.add(new FavoritoDTO(
                     favorito.getProducto().getCodigo(),
                     favorito.getProducto().getNombre(),
-                    favorito.getProducto().getDescripcion(),
+                    favorito.getProducto().getDescripcion()
             ));
         }
 
@@ -39,12 +39,7 @@ public class FavoritoServiceImpl implements FavoritoService {
         if (favorito.isPresent()) {
             Favorito f = favorito.get();
             return new FavoritoDTO(
-                    f.getProducto().getEstado(),
-                    f.getProducto().getFechaLimite(),
-                    f.getProducto().getFechaCreacion(),
-                    f.getProducto().getNombre(),
-                    f.getUsuario().get,
-                    ,
+                    f.get
             );
         }
 
