@@ -28,6 +28,7 @@ public class ProductoServicioImpl implements ProductoServicio {
         producto.setDescripcion( productoDTO.getDescripcion() );
         producto.setUnidades( productoDTO.getUnidades() );
         producto.setPrecio( productoDTO.getPrecio() );
+        producto.setCalificacion( productoDTO.getCalificacion());
         producto.setUsuario( usuarioServicio.obtener( productoDTO.getCodigoVendedor() ) );
         producto.setImagenes( productoDTO.getImagenes() );
         producto.setCategorias( productoDTO.getCategorias() );
@@ -158,6 +159,7 @@ public class ProductoServicioImpl implements ProductoServicio {
                 producto.getUnidades(),
                 producto.getUsuario().getCodigo(),
                 producto.getPrecio(),
+                producto.getCalificacion(),
                 producto.getImagenes(),
                 producto.getCategorias()
         );

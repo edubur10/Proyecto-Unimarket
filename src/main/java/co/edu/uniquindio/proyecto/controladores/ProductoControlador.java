@@ -16,19 +16,25 @@ import org.springframework.web.bind.annotation.*;
 public class ProductoControlador {
     private final ProductoServicio productoServicio;
 
+    /*
+@GetMapping("/obtener/{codigoUsuario}")
+    public ResponseEntity<MensajeDTO> obtenerUsuario(@PathVariable int codigoUsuario) throws Exception {
+        return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, usuarioServicio.obtenerUsuario(codigoUsuario)));
+    }
+*/
     @PostMapping("/crear")
-    int crearProducto(@RequestBody ProductoDTO productoDTO) throws Exception{
-        return productoServicio.crearProducto(productoDTO);
+    ResponseEntity<MensajeDTO> crearProducto(@RequestBody ProductoDTO productoDTO) throws Exception{
+        return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, productoServicio.crearProducto(productoDTO)));
     }
 
     @PutMapping("/actualizarProductos/{codigo}")
-    int actualizarProducto(@PathVariable int codigoProducto, @RequestBody ProductoGetDTO productoGetDTO) throws Exception{
-        return productoServicio.actualizarProducto(codigoProducto,productoGetDTO);
+    ResponseEntity<MensajeDTO> actualizarProducto(@PathVariable int codigoProducto, @RequestBody ProductoGetDTO productoGetDTO) throws Exception{
+        return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, productoServicio.actualizarProducto(codigoProducto,productoGetDTO)));
     }
 
     @PutMapping("/actualizarUnidades/{codigoProducto}")
-    int actualizarUnidades(@PathVariable int codigoProducto,@PathVariable int unidades) throws Exception{
-        return productoServicio.actualizarUnidades(codigoProducto,unidades);
+    ResponseEntity<MensajeDTO> actualizarUnidades(@PathVariable int codigoProducto,@PathVariable int unidades) throws Exception{
+        return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, productoServicio.actualizarUnidades(codigoProducto,unidades)));
     }
 
     @GetMapping("/obtenerProducto/{codigoProducto}")

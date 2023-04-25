@@ -30,6 +30,9 @@ public class ProductoGetDTO {
     private int codigoUsuario;
 
     private float precio;
+
+    private Integer calificacion;
+
     private List<String> imagenes;
 
     private List<Categoria> categorias;
