@@ -1,5 +1,6 @@
 package co.edu.uniquindio.proyecto;
 
+import co.edu.uniquindio.proyecto.dto.DetalleCompraGetDTO;
 import co.edu.uniquindio.proyecto.repositorios.DetalleCompraRepo;
 import co.edu.uniquindio.proyecto.servicios.interfaces.CompraServicio;
 import co.edu.uniquindio.proyecto.servicios.interfaces.DetalleCompraService;
@@ -33,6 +34,7 @@ public class DetalleCompraTest {
     private ProductoServicio productoServicio;
 
     /*
+
     @Test
     @Sql("classpath:dataset.sql")
     public void listarProductosUsuario(){
@@ -42,6 +44,8 @@ public class DetalleCompraTest {
         System.out.println(list);
 
     }
+
+
 
      */
 

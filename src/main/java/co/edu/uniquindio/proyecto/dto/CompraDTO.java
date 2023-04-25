@@ -15,6 +15,6 @@ public class CompraDTO {
 
     private int codigoUsuario;
     private MetodoPago metodoPago;
-    private List<DetalleCompra> detalleCompraDTO;
+    private List<DetalleCompraDTO> detalleCompraDTO;
     private Double valorTotal;
 }

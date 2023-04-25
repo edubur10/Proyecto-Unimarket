@@ -21,6 +21,6 @@ public class DetalleCompraDTO {
     @Positive
     @NotNull
     private float precio;
-    private ProductoGetDTO productoDTO;
+    private int codigoProducto;
 
 }

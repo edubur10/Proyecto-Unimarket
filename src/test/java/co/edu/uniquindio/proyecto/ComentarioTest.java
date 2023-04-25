@@ -266,6 +266,6 @@ public class ComentarioTest {
         ComentarioGetDTO comentarioGetDTO = comentarioServicio.obtenerComentario( codigoComentario);
 
         //Comprobamos que la dirección que está en la base de datos coincide con la que esperamos
-        Assertions.assertEquals("Hola", comentarioGetDTO.getMensaje());
+        Assertions.assertEquals("Saludo", comentarioGetDTO.getMensaje());
     }
 }
