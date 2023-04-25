@@ -8,6 +8,7 @@ import co.edu.uniquindio.proyecto.repositorios.UsuarioRepo;
 import co.edu.uniquindio.proyecto.servicios.interfaces.EmailServicio;
 import co.edu.uniquindio.proyecto.servicios.interfaces.UsuarioServicio;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -17,8 +18,9 @@ import java.util.Optional;
 public class UsuarioServicioImpl implements UsuarioServicio {
 
     private final UsuarioRepo usuarioRepo;
-
     private EmailServicio emailServicio;
+
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public int crearUsuario(UsuarioDTO usuarioDTO) throws Exception{
@@ -30,6 +32,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         }
 
         Usuario usuario = convertir(usuarioDTO);
+        usuario.setPassword( passwordEncoder.encode(usuarioDTO.getPassword()) );
         return usuarioRepo.save( usuario ).getCodigo();
     }
 

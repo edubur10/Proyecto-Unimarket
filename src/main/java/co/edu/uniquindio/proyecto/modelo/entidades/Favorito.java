@@ -1,8 +1,6 @@
 package co.edu.uniquindio.proyecto.modelo.entidades;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
@@ -17,13 +15,17 @@ public class Favorito implements Serializable {
 
     @Id
     @EqualsAndHashCode.Include
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int codigo;
+
     @ManyToOne
     private Producto producto;
 
-    @Id
-    @EqualsAndHashCode.Include
     @ManyToOne
     private Usuario usuario;
 
-
+    public Favorito(Producto producto, Usuario usuario) {
+        this.producto = producto;
+        this.usuario = usuario;
+    }
 }

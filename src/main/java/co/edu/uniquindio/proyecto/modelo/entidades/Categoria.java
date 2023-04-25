@@ -7,8 +7,13 @@ import lombok.*;
 public enum Categoria {
 
     TECNOLOGIA,
-    VEHICULO,
-    CELUALRES,
-    HOGAR
+    DEPORTE,
+    HOGAR,
+    HERRAMIENTAS,
+    AUTOMOVILES,
+    INSTRUMENTOS,
+    LIBROS,
+    RELOJES,
+    SALUD
 
 }

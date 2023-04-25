@@ -9,7 +9,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class FavoritoDTO {
-    private ProductoGetDTO producto;
-    private UsuarioGetDTO usuario;
+public class FavoritoGetDTO {
+
+    private int codigo;
+    private ProductoGetDTO productoId;
+    private UsuarioGetDTO usuarioId;
 }

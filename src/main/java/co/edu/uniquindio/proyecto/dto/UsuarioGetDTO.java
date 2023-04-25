@@ -2,10 +2,7 @@ package co.edu.uniquindio.proyecto.dto;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.List;
 
@@ -13,6 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
 public class UsuarioGetDTO {
 
     //@GeneratedValue(strategy = GenerationType.IDENTITY) //autoincrementable codigo

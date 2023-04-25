@@ -13,6 +13,6 @@ import java.util.List;
 @Repository
 public interface ModeradorRepo extends JpaRepository<Moderador, Integer> {
     @Query("SELECT pm.producto FROM ProductoModerador pm WHERE pm.moderador.codigo = :moderadorId")
-    List<Producto> ListarPorModeradorId(@Param("codigo") Integer moderadorId);
+    List<Producto> ListarPorModeradorId(Integer moderadorId);
 
 }

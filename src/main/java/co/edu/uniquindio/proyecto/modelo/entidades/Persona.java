@@ -3,15 +3,18 @@ package co.edu.uniquindio.proyecto.modelo.entidades;
 import com.sun.jdi.PrimitiveValue;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 
 @Setter
 @Getter
+@AllArgsConstructor
+@MappedSuperclass
+@NoArgsConstructor
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@ToString
 public class Persona implements Serializable {
 
     @Id
