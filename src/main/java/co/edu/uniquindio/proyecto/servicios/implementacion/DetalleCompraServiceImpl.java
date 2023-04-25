@@ -1,9 +1,6 @@
 package co.edu.uniquindio.proyecto.servicios.implementacion;
 
-import co.edu.uniquindio.proyecto.dto.CompraDTO;
-import co.edu.uniquindio.proyecto.dto.CompraGetDTO;
-import co.edu.uniquindio.proyecto.dto.DetalleCompraDTO;
-import co.edu.uniquindio.proyecto.dto.ProductoGetDTO;
+import co.edu.uniquindio.proyecto.dto.*;
 import co.edu.uniquindio.proyecto.modelo.entidades.Compra;
 import co.edu.uniquindio.proyecto.modelo.entidades.DetalleCompra;
 import co.edu.uniquindio.proyecto.repositorios.DetalleCompraRepo;
@@ -13,7 +10,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -37,6 +36,39 @@ public class DetalleCompraServiceImpl implements DetalleCompraService {
         return detallesCompra.stream()
                 .map(this::toDTO)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Integer> obtenerDetallesCodigo(List<DetalleCompra> compras) {
+        List<Integer> codigoDetalles = new ArrayList<>();
+        for (DetalleCompra d: compras) {
+            codigoDetalles.add( d.getCodigo() );
+
+        }
+        return codigoDetalles;
+    }
+
+    @Override
+    public DetalleCompraGetDTO obtenerDetalleCompra(int codigoDetalleCompra) throws Exception {
+        Optional<DetalleCompra> detalleCompra = detalleCompraRepo.findById(codigoDetalleCompra);
+
+        if(detalleCompra.isEmpty() ){
+            throw new Exception("El código "+codigoDetalleCompra+" no está asociado a ningún producto");
+        }
+
+        return convertir(detalleCompra.get());
+    }
+
+    private DetalleCompraGetDTO convertir(DetalleCompra detalleCompra) {
+        DetalleCompraGetDTO detalleCompraGetDTO = new DetalleCompraGetDTO(
+                detalleCompra.getCodigo(),
+                detalleCompra.getUnidades(),
+                detalleCompra.getPrecio_producto(),
+                detalleCompra.getCompra().getCodigo(),
+                detalleCompra.getProducto().getCodigo()
+
+        );
+        return detalleCompraGetDTO;
     }
 
     private DetalleCompraDTO toDTO(DetalleCompra detalleCompra) {

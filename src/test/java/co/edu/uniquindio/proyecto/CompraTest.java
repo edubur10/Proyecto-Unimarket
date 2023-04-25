@@ -2,8 +2,7 @@ package co.edu.uniquindio.proyecto;
 
 import co.edu.uniquindio.proyecto.dto.CompraDTO;
 import co.edu.uniquindio.proyecto.dto.CompraGetDTO;
-import co.edu.uniquindio.proyecto.modelo.entidades.MetodoPago;
-import co.edu.uniquindio.proyecto.modelo.entidades.Estado;
+import co.edu.uniquindio.proyecto.modelo.entidades.DetalleCompra;
 import co.edu.uniquindio.proyecto.modelo.entidades.MetodoPago;
 import co.edu.uniquindio.proyecto.servicios.interfaces.CompraServicio;
 import org.junit.jupiter.api.Assertions;
@@ -12,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -40,9 +41,10 @@ public class CompraTest
     @Sql("classpath:dataset.sql")
     public void crearCompraTest()
     {
+        List<DetalleCompra> listaDetalleCompra = new ArrayList<>();
         try {
 
-            CompraDTO usuarioDTO = new CompraDTO( 5, MetodoPago.TARJETA_CREDITO, );
+            CompraDTO usuarioDTO = new CompraDTO( 5, MetodoPago.TARJETA_CREDITO, listaDetalleCompra, 12.000 );
             compraServicio.crearCompra(usuarioDTO);
 
             Assertions.assertNotNull(usuarioDTO);

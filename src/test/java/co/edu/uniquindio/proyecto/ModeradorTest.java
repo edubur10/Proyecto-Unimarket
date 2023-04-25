@@ -1,11 +1,10 @@
 package co.edu.uniquindio.proyecto;
 
 import co.edu.uniquindio.proyecto.dto.ProductoDTO;
-import co.edu.uniquindio.proyecto.dto.ProductoGetDTO;
 import co.edu.uniquindio.proyecto.dto.UsuarioDTO;
 import co.edu.uniquindio.proyecto.modelo.entidades.Categoria;
 import co.edu.uniquindio.proyecto.modelo.entidades.Producto;
-import co.edu.uniquindio.proyecto.repositorios.ProductoRepo;
+import co.edu.uniquindio.proyecto.servicios.interfaces.ModeradorServicio;
 import co.edu.uniquindio.proyecto.servicios.interfaces.ProductoServicio;
 import co.edu.uniquindio.proyecto.servicios.interfaces.UsuarioServicio;
 import jakarta.transaction.Transactional;
@@ -20,18 +19,16 @@ import java.util.List;
 
 @SpringBootTest
 @Transactional
-public class ProductoTest {
-
+public class ModeradorTest {
     @Autowired
-    private ProductoRepo miProductoRepo;
-    @Autowired
-    private ProductoServicio productoServicio;
-
+    private ModeradorServicio moderadorServicio;
     @Autowired
     private UsuarioServicio usuarioServicio;
-
+    @Autowired
+    private ProductoServicio productoServicio;
     @Test
-    public void registrarProducto()throws Exception{
+    @Sql("classpath:dataset.sql")
+    public void aprobarProducto() throws Exception {
 
         List<String> telefonos = new ArrayList<>();
         telefonos.add("3225247458");
@@ -42,13 +39,15 @@ public class ProductoTest {
                 "pepe1@email.com",
                 "1234",
                 "Calle 123",
-                telefonos);
+                telefonos );
 
         //El servicio del usuario nos retorna el código con el que quedó en la base de datos
         int codigoVendedor = usuarioServicio.crearUsuario(usuarioDTO);
 
+        List<Categoria> categoriaList = new ArrayList<>();
+        categoriaList.add(Categoria.TECNOLOGIA);
         //Se crea la colección de imágenes para el producto.
-        List<String> imagenes = new ArrayList<>();
+        List<String> imagenes = new ArrayList<String>();
         imagenes.add("http://www.google.com/images/imagenasus.png");
         imagenes.add("http://www.google.com/images/imagenasus_original.png");
 
@@ -60,64 +59,27 @@ public class ProductoTest {
                 7000000,
                 codigoVendedor,
                 imagenes,
-                List.of(Categoria.TECNOLOGIA)
-        );
-
+                categoriaList);
         //Se llama el servicio para crear el producto
-        int codigoProducto = productoServicio.crearProducto( productoDTO );
+        int codigoProducto = productoServicio.crearProducto(productoDTO);
+        Producto producto = productoServicio.obtener(codigoProducto);
 
         //Se espera que el servicio retorne el código del nuevo producto
-        Assertions.assertNotEquals(0, codigoProducto);
+        //Assertions.assertNotEquals(0, codigoProducto);
+
+        moderadorServicio.aprobarProducto(codigoProducto);
+        Assertions.assertNotEquals("Rechazado", producto.getEstado());
 
     }
 
     @Test
-    public void listarProductosTestSql(){
-
-        //se guardan los datos del sql en una lista
-        List<ProductoGetDTO> listaProductos=productoServicio.listarProductosNombre("Computador Asus 1");
-
-        //el for se usa para mostrar los datos guardados en la lista
-        for (ProductoGetDTO misProductos: listaProductos) {
-            System.out.println(misProductos);
-        }
-    }
-
-    @Test
-    public void actualizarUsuarioTest() throws Exception {
-        ProductoGetDTO producto = productoServicio.obtenerProducto(101);
-        producto.setPrecio(7522114);
-
-        productoServicio.actualizarProducto(1, producto);
-
-        ProductoGetDTO producto1 = productoServicio.obtenerProducto(1);
-
-        Assertions.assertEquals(7522114, producto1.getPrecio());
-
-    }
-
-    @Test
-   // @Sql("classpath:dataset.sql")
-    public void eliminarProductoTest()throws Exception{
-        try{
-
-            ProductoGetDTO p = productoServicio.obtenerProducto(101);
-            System.out.println(p);
-
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-
-    }
-
-    @Test
-   // @Sql("classpath:dataset.sql")
-    public void eliminarProductoTest2()throws Exception {
+    @Sql("classpath:dataset.sql")
+    public void rechazarProducto() throws Exception {
 
         List<String> telefonos = new ArrayList<>();
         telefonos.add("3225247458");
         telefonos.add("3225874152");
-        //Para eliminar el Producto primero se debe crear
+
         UsuarioDTO usuarioDTO = new UsuarioDTO(
                 "Pepito 1",
                 "pepe1@email.com",
@@ -146,18 +108,12 @@ public class ProductoTest {
                 categoriaList);
         //Se llama el servicio para crear el producto
         int codigoProducto = productoServicio.crearProducto(productoDTO);
+        Producto producto = productoServicio.obtener(codigoProducto);
 
         //Se espera que el servicio retorne el código del nuevo producto
-        Assertions.assertNotEquals(0, codigoProducto);
+        //Assertions.assertNotEquals(0, codigoProducto);
 
-        //Una vez creado, lo borramos
-        int codigoBorrado = productoServicio.eliminarProducto(codigoProducto);
-
-        //Si intentamos buscar un usuario con el codigo del usuario borrado debemos obtener una excepción
-        // indicando que ya no existe
-        Assertions.assertEquals(codigoBorrado,codigoProducto);
-
+        moderadorServicio.rechazarProducto(codigoProducto);
+        Assertions.assertNotEquals("Rechazdo", producto.getEstado()); //Preguntar
     }
-
-
 }

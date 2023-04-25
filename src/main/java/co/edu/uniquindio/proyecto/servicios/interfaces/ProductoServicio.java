@@ -13,7 +13,7 @@ public interface ProductoServicio {
 
     int crearProducto(ProductoDTO productoDTO)  throws Exception;
 
-    int actualizarProducto(int codigoProducto, ProductoGetDTO productoDTO)  throws Exception;
+    int actualizarProducto(int codigoProducto, ProductoGetDTO productoGetDTO)  throws Exception;
 
     int actualizarUnidades(int codigoProducto, int unidades) throws Exception;
 

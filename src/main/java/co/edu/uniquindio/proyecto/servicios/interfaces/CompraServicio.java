@@ -15,4 +15,8 @@ public interface CompraServicio {
     CompraGetDTO obtenerCompra(int codigoCompra) throws Exception;
 
     Compra obtener(int codigoCompra) throws Exception;
+
+    public int eliminiarCompra(int codigoCompra) throws Exception;
+
+    public CompraGetDTO actualizarCompra(int codigoCompra, CompraDTO compraDTO) throws Exception;
 }

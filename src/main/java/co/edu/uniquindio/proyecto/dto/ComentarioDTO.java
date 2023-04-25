@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
+import java.time.LocalDateTime;
+
 @AllArgsConstructor
 @Getter
 @Setter
@@ -18,5 +20,7 @@ public class ComentarioDTO { //DTO --> Datos de trnsferencia simples
     private int codigoUsuario;
 
     private int codigoProducto;
+
+    private LocalDateTime localDateTime;
 
 }

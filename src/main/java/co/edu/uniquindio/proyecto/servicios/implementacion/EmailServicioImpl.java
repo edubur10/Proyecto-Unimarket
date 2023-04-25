@@ -27,7 +27,7 @@ public class EmailServicioImpl implements EmailServicio {
             helper.setSubject(emailDTO.getAsunto());
             helper.setText(emailDTO.getCuerpo(), true);
             helper.setTo(emailDTO.getDestinatario());
-            helper.setFrom("no_reply@unicine.com");
+            helper.setFrom("eduardoe.burbanoc@uqvirtual.com");
 
             javaMailSender.send(mensaje);
 

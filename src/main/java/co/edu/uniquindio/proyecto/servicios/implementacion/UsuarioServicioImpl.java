@@ -20,7 +20,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
     private final UsuarioRepo usuarioRepo;
     private EmailServicio emailServicio;
 
-    private final PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder; //Preguntar
 
     @Override
     public int crearUsuario(UsuarioDTO usuarioDTO) throws Exception{
@@ -32,7 +32,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         }
 
         Usuario usuario = convertir(usuarioDTO);
-        cliente.setPassword( passwordEncoder.encode(usuarioDTO.getPassword()) );
+        usuario.setPassword( passwordEncoder.encode(usuarioDTO.getPassword()) );
         return usuarioRepo.save( usuario ).getCodigo();
     }
 

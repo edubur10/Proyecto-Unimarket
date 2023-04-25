@@ -23,7 +23,7 @@ public class Compra implements Serializable {
     @DateTimeFormat //preguntar
     private LocalDateTime fecha_creacion;
 
-    private Float valor_total;
+    private Double valor_total;
 
     @Column(nullable = false)
     private MetodoPago metodo_pago;
