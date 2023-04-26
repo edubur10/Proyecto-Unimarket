@@ -55,6 +55,7 @@ public class ProductoTest {
                 "Es el mejor computador portatil que el dinero pueda comprar",
                 1,
                 7000000,
+                2,
                 codigoVendedor,
                 imagenes,
                 List.of(Categoria.TECNOLOGIA)
@@ -138,6 +139,7 @@ public class ProductoTest {
                 "Es el mejor computador portatil que el dinero pueda comprar",
                 1,
                 7000000,
+                2,
                 codigoVendedor,
                 imagenes,
                 categoriaList);

@@ -1,5 +1,9 @@
 package co.edu.uniquindio.proyecto;
 
+import co.edu.uniquindio.proyecto.dto.*;
+import co.edu.uniquindio.proyecto.modelo.entidades.Categoria;
+import co.edu.uniquindio.proyecto.modelo.entidades.DetalleCompra;
+import co.edu.uniquindio.proyecto.modelo.entidades.MetodoPago;
 import co.edu.uniquindio.proyecto.repositorios.DetalleCompraRepo;
 import co.edu.uniquindio.proyecto.servicios.interfaces.CompraServicio;
 import co.edu.uniquindio.proyecto.servicios.interfaces.DetalleCompraService;
@@ -32,22 +36,18 @@ public class DetalleCompraTest {
     @Autowired
     private ProductoServicio productoServicio;
 
-    /*
     @Test
-    @Sql("classpath:dataset.sql")
+   // @Sql("classpath:dataset.sql")
     public void listarProductosUsuario(){
 
-        List<DetalleCompraGetDTO> list = detalleCompraService.listarPorCodigoProducto(1);
+        List<DetalleCompraDTO> list = detalleCompraService.listarPorCodigoProducto(1);
 
         System.out.println(list);
 
     }
 
-     */
-
-    /*
     @Test
-    @Sql("classpath:dataset.sql")
+   // @Sql("classpath:dataset.sql")
     public void crearDetalleCompraTest() throws Exception {
 
         List<String> telefonos = new ArrayList<>();
@@ -77,6 +77,7 @@ public class DetalleCompraTest {
                 "Es el mejor computador portatil que el dinero pueda comprar",
                 1,
                 7000000,
+                5,
                 codigoVendedor,
                 imagenes,
                 categoriaList);
@@ -91,19 +92,42 @@ public class DetalleCompraTest {
         detalleCompra.setProducto(productoServicio.obtener(codigoProducto));
         detalleCompra.setUnidades(7);
         float valor = 7 * productoDTO.getPrecio();
-        detalleCompra.setProducto(valor);
+        detalleCompra.setPrecio_producto(valor);
 
         //le añadimos detalle compra
         lista.add(detalleCompra) ;
 
 
-    }
 
-     */
+        int codigoDetalleCompra = 0;
+
+        List<DetalleCompraDTO> lista1 = new ArrayList<>();
+        lista1.add(new DetalleCompraDTO(1,120000, 1));
+
+        //Creamos la compra DTO
+        CompraDTO compraDTO = new CompraDTO(
+                codigoVendedor,
+                MetodoPago.TARJETA_CREDITO,
+                lista1,
+                120.0000);
+        //Llamamos el metodo crar compra
+        int codigoCompra = compraServicio.crearCompra(compraDTO);
+
+        //validamos si se creo
+        // Assertions.assertEquals(detalleCompra, compraDTO.getDetalleCompraList().get(0));
+        Assertions.assertNotEquals(0,detalleCompra.getCodigo());
+
+        // List<DetalleCompra> listaDetalle = compraServicio.obtenerCompra(codigoCompra).getDetalleCompraList();
+        // int codigoDetalleCompra = detalleCompraServicio.obtenerDetallesCodigo(listaDetalle).get(0);
+
+        //Assertions.assertNotEquals(0, codigoDetalleCompra);
+
+
+    }
 
 
     @Test
-    @Sql("classpath:dataset.sql")
+   // @Sql("classpath:dataset.sql")
     public void obtenerDetalleCompraTest()throws Exception{
 
     }

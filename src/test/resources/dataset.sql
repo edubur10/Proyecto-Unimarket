@@ -12,12 +12,12 @@ insert into usuario values (3,"julianah@gmail.com","Juliana Huertas","$2a$10$7Y.
 insert into usuario values (4,"camilal@gmail.com","Camila Leal","$2a$10$7Y.di/zHO3xnRhWUCKwQhObLuBydSA01fy5q9Iilt/2AP39JaSKXa","calle 30 20-51");
 insert into usuario values (5,"nicolj@gmail.com","Nicol Jimenez","$2a$10$7Y.di/zHO3xnRhWUCKwQhObLuBydSA01fy5q9Iilt/2AP39JaSKXa","calle 50");
 
-# Producto (Codigo, Descripción, Estado: 1.Aprobado, 2.Rechazado, 3.Sin revisar, Fecha de creación, Fecha limite, Nombre, Precio, Unidades, Usuario_Codigo)
-insert into producto values (101, "telefono con 4 gb de ram", 1, "2023-04-22", "2023-10-22", "Samsumg a12", 560000.0, 2, 1);
-insert into producto values (102, "computador asus vivobook 14", 0, "2023-01-15", "2023-06-15", "computador portatil", 2600000.0, 5, 3);
-insert into producto values (103, "comedor de seis puestos", 2, "2023-03-13", "2023-09-13", "comedor familiar", 1500000.0, 1, 4);
-insert into producto values (104, "camisetas diesel", 2, "2023-02-17", "2023-08-17", "camisetas para hombre", 200000.0, 10, 2);
-insert into producto values (105, "estuche para celular", 0, "2023-05-16", "2023-11-16", "forro celulares", 25000.0, 26, 5);
+# Producto (Codigo, Calificación, Descripción, Estado: 1.Aprobado, 2.Rechazado, 3.Sin revisar, Fecha de creación, Fecha limite, Nombre, Precio, Unidades, Usuario_Codigo)
+insert into producto values (101, 3, "telefono con 4 gb de ram", 1, "2023-04-22", "2023-10-22", "Samsumg a12", 560000.0, 2, 1);
+insert into producto values (102, 3, "computador asus vivobook 14", 0, "2023-01-15", "2023-06-15", "computador portatil",  2600000.0, 5, 3);
+insert into producto values (103, 2, "comedor de seis puestos", 2, "2023-03-13", "2023-09-13", "comedor familiar", 1500000.0, 1, 4);
+insert into producto values (104, 1, "camisetas diesel", 2, "2023-02-17", "2023-08-17", "camisetas para hombre", 200000.0, 10, 2);
+insert into producto values (105, 5, "estuche para celular", 0, "2023-05-16", "2023-11-16", "forro celulares", 25000.0, 26, 5);
 
 
 # Comentario (Codigo, Fecha, Mnesaje, Producto_Codigo, Usuario_Codigo)

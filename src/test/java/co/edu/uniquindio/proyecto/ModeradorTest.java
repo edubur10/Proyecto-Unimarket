@@ -27,7 +27,7 @@ public class ModeradorTest {
     @Autowired
     private ProductoServicio productoServicio;
     @Test
-    @Sql("classpath:dataset.sql")
+    //@Sql("classpath:dataset.sql")
     public void aprobarProducto() throws Exception {
 
         List<String> telefonos = new ArrayList<>();
@@ -57,6 +57,7 @@ public class ModeradorTest {
                 "Es el mejor computador portatil que el dinero pueda comprar",
                 1,
                 7000000,
+                2,
                 codigoVendedor,
                 imagenes,
                 categoriaList);
@@ -73,7 +74,7 @@ public class ModeradorTest {
     }
 
     @Test
-    @Sql("classpath:dataset.sql")
+   // @Sql("classpath:dataset.sql")
     public void rechazarProducto() throws Exception {
 
         List<String> telefonos = new ArrayList<>();
@@ -103,6 +104,7 @@ public class ModeradorTest {
                 "Es el mejor computador portatil que el dinero pueda comprar",
                 1,
                 7000000,
+                2,
                 codigoVendedor,
                 imagenes,
                 categoriaList);
