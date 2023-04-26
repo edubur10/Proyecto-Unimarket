@@ -16,12 +16,6 @@ import org.springframework.web.bind.annotation.*;
 public class ProductoControlador {
     private final ProductoServicio productoServicio;
 
-    /*
-@GetMapping("/obtener/{codigoUsuario}")
-    public ResponseEntity<MensajeDTO> obtenerUsuario(@PathVariable int codigoUsuario) throws Exception {
-        return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, usuarioServicio.obtenerUsuario(codigoUsuario)));
-    }
-*/
     @PostMapping("/crear")
     ResponseEntity<MensajeDTO> crearProducto(@RequestBody ProductoDTO productoDTO) throws Exception{
         return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, productoServicio.crearProducto(productoDTO)));
