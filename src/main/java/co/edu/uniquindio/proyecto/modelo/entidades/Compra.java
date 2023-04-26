@@ -18,6 +18,7 @@ public class Compra implements Serializable {
 
     @Id
     @EqualsAndHashCode.Include
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codigo;
 
     @DateTimeFormat //preguntar

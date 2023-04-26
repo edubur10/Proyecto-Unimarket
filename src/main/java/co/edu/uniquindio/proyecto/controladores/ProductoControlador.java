@@ -27,16 +27,17 @@ public class ProductoControlador {
         return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, productoServicio.crearProducto(productoDTO)));
     }
 
-    @PutMapping("/actualizarProductos/{codigo}")
+    @PutMapping("/actualizarProductos/{codigoProducto}")
     ResponseEntity<MensajeDTO> actualizarProducto(@PathVariable int codigoProducto, @RequestBody ProductoGetDTO productoGetDTO) throws Exception{
         return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, productoServicio.actualizarProducto(codigoProducto,productoGetDTO)));
     }
 
-    @PutMapping("/actualizarUnidades/{codigoProducto}")
-    ResponseEntity<MensajeDTO> actualizarUnidades(@PathVariable int codigoProducto,@PathVariable int unidades) throws Exception{
+    /*
+    @PutMapping("/actualizarUnidades/{codigoProducto}/{unidades}")
+    ResponseEntity<MensajeDTO> actualizarUnidades(@PathVariable int codigoProducto,@RequestBody int unidades) throws Exception{
         return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, productoServicio.actualizarUnidades(codigoProducto,unidades)));
     }
-
+*/
     @GetMapping("/obtenerProducto/{codigoProducto}")
     public ResponseEntity<MensajeDTO> obtenerProducto(@PathVariable int codigoProducto) throws Exception{
         return ResponseEntity.status(200).body( new MensajeDTO(HttpStatus.OK, false, productoServicio.obtenerProducto(codigoProducto)) );
