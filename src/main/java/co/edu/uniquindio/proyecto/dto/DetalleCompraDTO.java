@@ -14,10 +14,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class DetalleCompraDTO {
 
-    private int codigo;
     @PositiveOrZero
     private int unidades;
-
     @Positive
     @NotNull
     private float precio;

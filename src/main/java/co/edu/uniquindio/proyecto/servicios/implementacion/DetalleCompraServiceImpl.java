@@ -74,7 +74,7 @@ public class DetalleCompraServiceImpl implements DetalleCompraService {
     private DetalleCompraDTO toDTO(DetalleCompra detalleCompra) {
 
         DetalleCompraDTO detalleCompraDTO = new DetalleCompraDTO();
-        detalleCompraDTO.setCodigo(detalleCompra.getCodigo());
+        detalleCompraDTO.setCodigoProducto(detalleCompra.getCodigo());
         detalleCompraDTO.setUnidades(detalleCompra.getUnidades());
         detalleCompraDTO.setPrecio(detalleCompra.getPrecio_producto());
 

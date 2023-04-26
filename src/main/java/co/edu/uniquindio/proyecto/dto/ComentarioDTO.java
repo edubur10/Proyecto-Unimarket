@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 public class ComentarioDTO { //DTO --> Datos de trnsferencia simples
 
     @NotNull
-    @Length(max = 100, message = "El comentario debe de ser minimo de 160 caracteres debe tener máximo 100 caracteres")
+    @Length(max = 100, message = "El comentario  debe tener máximo 100 caracteres")
     private String mensaje;
 
     private int codigoUsuario;

@@ -61,6 +61,7 @@ public class ComentarioTest {
                 "Es el mejor computador portatil que el dinero pueda comprar",
                 1,
                 7000000,
+                2,
                 codigoVendedor,
                 imagenes,
                 categoriaList);
@@ -116,6 +117,7 @@ public class ComentarioTest {
                 "Es el mejor computador portatil que el dinero pueda comprar",
                 1,
                 7000000,
+                2,
                 codigoVendedor,
                 imagenes,
                 categoriaList);
@@ -175,6 +177,7 @@ public class ComentarioTest {
                 "Es el mejor computador portatil que el dinero pueda comprar",
                 1,
                 7000000,
+                2,
                 codigoVendedor,
                 imagenes,
                 categoriaList);
@@ -241,6 +244,7 @@ public class ComentarioTest {
                 "Es el mejor computador portatil que el dinero pueda comprar",
                 1,
                 7000000,
+                2,
                 codigoVendedor,
                 imagenes,
                 categoriaList);

@@ -17,6 +17,7 @@ import java.util.List;
 public class Compra implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private Integer codigo;
 

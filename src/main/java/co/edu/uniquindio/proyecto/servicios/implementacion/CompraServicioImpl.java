@@ -36,7 +36,7 @@ public class CompraServicioImpl implements CompraServicio {
         compra.setValor_total(compra.getValor_total());
         compra.setMetodo_pago(compraDTO.getMetodoPago());
         compra.setUsuario(usuarioServicio.obtener(compraDTO.getCodigoUsuario()));
-        compra.setDetalleCompras(compraDTO.getDetalleCompraDTO());
+        compra.setDetalleCompras(compra.getDetalleCompras());
 
         return compraRepo.save(compra).getCodigo();
     }
@@ -108,7 +108,7 @@ public class CompraServicioImpl implements CompraServicio {
         compra.setMetodo_pago(compraDTO.getMetodoPago());
         compra.setValor_total(compraDTO.getValorTotal());
         compra.setUsuario(usuario);
-        compra.setDetalleCompras(compraDTO.getDetalleCompraDTO());
+        compra.setDetalleCompras(compra.getDetalleCompras());
 
         for (DetalleCompra d : compra.getDetalleCompras()) {
             detalleCompraRepo.save(d);
