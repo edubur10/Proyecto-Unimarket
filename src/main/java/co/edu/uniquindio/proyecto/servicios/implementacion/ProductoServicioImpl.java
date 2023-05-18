@@ -7,6 +7,7 @@ import co.edu.uniquindio.proyecto.repositorios.ProductoRepo;
 import co.edu.uniquindio.proyecto.servicios.interfaces.ProductoServicio;
 import co.edu.uniquindio.proyecto.servicios.interfaces.UsuarioServicio;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -264,4 +265,17 @@ public class ProductoServicioImpl implements ProductoServicio {
 
         return respuesta;
     }
+
+    @Override
+    public List<ProductoGetDTO> obtenerProductoMinimoMaximo(Categoria categoria) throws Exception {
+        {
+            List<ProductoGetDTO> lista = new ArrayList<>();
+            lista.add(convertir(productoRepo.obtenerProductoMinimo(categoria)));
+            lista.add(convertir(productoRepo.obtenerProductoMaximo(categoria)));
+
+            return lista;
+        }
+    }
+
+
 }
