@@ -28,6 +28,7 @@ public class WebSecurityConfig {
         http.authorizeHttpRequests()
                 .requestMatchers("/api/sesion/**").permitAll()
                 .anyRequest().authenticated();
+      //  http.authorizeHttpRequests().anyRequest().permitAll();
         http.exceptionHandling().authenticationEntryPoint(jwtEntryPoint);
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authenticationProvider(authenticationProvider);

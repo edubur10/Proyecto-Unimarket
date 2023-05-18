@@ -12,6 +12,7 @@ import co.edu.uniquindio.proyecto.servicios.interfaces.UsuarioServicio;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -27,7 +28,9 @@ public class ComentarioServicioImpl implements ComentarioServicio {
     @Override
     public int crearComentario(ComentarioDTO comentarioDTO) throws Exception {
 
+        LocalDateTime fecha = LocalDateTime.now();
         Comentario comentario = convertirDTOaComentario(comentarioDTO);
+        comentario.setFecha(fecha);
         return comentarioRepo.save(comentario).getCodigo();
     }
 

@@ -6,6 +6,7 @@ import co.edu.uniquindio.proyecto.modelo.entidades.Producto;
 import co.edu.uniquindio.proyecto.modelo.entidades.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -37,6 +38,11 @@ public interface ProductoRepo extends JpaRepository<Producto, Integer> {
 
     @Query("select p from Producto p where p.precio = (select max (p.precio) from Producto p where :categoria member of p.categorias )")
     Producto obtenerProductoMaximo(Categoria categoria);
+    @Query("SELECT p FROM Producto p JOIN p.categorias c WHERE c = :categoria ORDER BY p.precio DESC")
+    Producto obtenerProductoMasCaroPorCategoria(@Param("categoria") Categoria categoria);
+
+    @Query("SELECT p FROM Producto p JOIN p.categorias c WHERE c = :categoria ORDER BY p.precio ASC")
+    Producto obtenerProductoMasBaratoPorCategoria(@Param("categoria") Categoria categoria);
 
 
 }

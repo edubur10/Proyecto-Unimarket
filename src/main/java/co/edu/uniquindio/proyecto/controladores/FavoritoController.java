@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 public class FavoritoController {
 
     private final FavoritoService favoritoService;
-    @GetMapping("/usuario/{usuarioId}")
+    @GetMapping("/{usuarioId}")
     public ResponseEntity<MensajeDTO> listarFavoritosPorUsuario(@PathVariable Integer usuarioId) {
         UsuarioGetDTO usuarioDTO = new UsuarioGetDTO();
         usuarioDTO.setCodigo(usuarioId);
@@ -30,7 +30,7 @@ public class FavoritoController {
         return ResponseEntity.ok( new MensajeDTO<>(HttpStatus.OK, false, favoritoService.listarFavoritosPorUser(usuarioDTO)) );
     }
 
-    @PostMapping("/favoritos")
+    @PostMapping("/agregarFavorito")
     public ResponseEntity<MensajeDTO> agregarFavorito(@RequestBody FavoritoDTO favoritoDto) {
         try {
             favoritoService.agregarFavorito(favoritoDto);
@@ -40,7 +40,7 @@ public class FavoritoController {
         }
     }
 
-    @DeleteMapping("/favoritos")
+    @DeleteMapping("/eliminarFavorito")
     public ResponseEntity<MensajeDTO> eliminarFavorito(@RequestBody FavoritoGetDTO favoritoDTO) {
         favoritoService.eliminarFavorito(favoritoDTO);
         return ResponseEntity.ok( new MensajeDTO<>(HttpStatus.OK, false,"Favorito eliminado correctamente" ));

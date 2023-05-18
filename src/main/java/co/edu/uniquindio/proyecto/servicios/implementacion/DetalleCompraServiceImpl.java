@@ -98,4 +98,9 @@ public class DetalleCompraServiceImpl implements DetalleCompraService {
         // mapear otras propiedades de CompraGetDTO a Compra si es necesario
         return compra;
     }
+
+    @Override
+    public List<ProductoGetDTO> getProductosCompradosPorUsuario(int idUsuario) {
+        return detalleCompraRepo.getProductosCompradosPorUsuario(idUsuario);
+    }
 }
