@@ -10,6 +10,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class FavoritoDTO {
-    private ProductoGetDTO producto;
-    private UsuarioGetDTO usuario;
+    private int codigoProducto;
+    private int codigoUsuario;
 }

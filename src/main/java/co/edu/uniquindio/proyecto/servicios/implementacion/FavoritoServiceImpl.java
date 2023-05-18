@@ -37,28 +37,8 @@ public class FavoritoServiceImpl implements FavoritoService {
                 .orElseThrow(() -> new NotFoundException("Usuario no encontrado"));
 
         List<Favorito> favoritos = favoritoRepo.listarFavoritosPorUser(usuario.getCodigo());
-        return favoritos.stream().map(favorito -> new FavoritoDTO(
-                new ProductoGetDTO(
-                        favorito.getProducto().getCodigo(),
-                        favorito.getProducto().getEstado(),
-                        favorito.getProducto().getFechaLimite(),
-                        favorito.getProducto().getNombre(),
-                        favorito.getProducto().getDescripcion(),
-                        favorito.getProducto().getUnidades(),
-                        favorito.getProducto().getUsuario().getCodigo(),
-                        favorito.getProducto().getPrecio(),
-                        favorito.getProducto().getCalificacion(),
-                        favorito.getProducto().getImagenes(),
-                        favorito.getProducto().getCategorias()
-                ),
-                new UsuarioGetDTO(
-                        favorito.getUsuario().getCodigo(),
-                        favorito.getUsuario().getNombre(),
-                        favorito.getUsuario().getEmail(),
-                        favorito.getUsuario().getDireccion(),
-                        favorito.getUsuario().getTelefono()
-                )
-        )).collect(Collectors.toList());
+        return favoritos.stream().map(favorito -> new FavoritoDTO( favorito.getProducto().getCodigo(), favorito.getUsuario().getCodigo() )
+        ).collect(Collectors.toList());
     }
 
     @Override
@@ -72,35 +52,14 @@ public class FavoritoServiceImpl implements FavoritoService {
         Favorito favorito = favoritoRepo.listarFavoritosPorProductAndUser(producto, usuario)
                 .orElseThrow(() -> new NotFoundException("Favorito no encontrado"));
 
-        return new FavoritoDTO(
-                new ProductoGetDTO(
-                        favorito.getProducto().getCodigo(),
-                        favorito.getProducto().getEstado(),
-                        favorito.getProducto().getFechaLimite(),
-                        favorito.getProducto().getNombre(),
-                        favorito.getProducto().getDescripcion(),
-                        favorito.getProducto().getUnidades(),
-                        favorito.getProducto().getUsuario().getCodigo(),
-                        favorito.getProducto().getPrecio(),
-                        favorito.getProducto().getCalificacion(),
-                        favorito.getProducto().getImagenes(),
-                        favorito.getProducto().getCategorias()
-                ),
-                new UsuarioGetDTO(
-                        favorito.getUsuario().getCodigo(),
-                        favorito.getUsuario().getNombre(),
-                        favorito.getUsuario().getEmail(),
-                        favorito.getUsuario().getDireccion(),
-                        favorito.getUsuario().getTelefono()
-                )
-        );
+        return new FavoritoDTO( favorito.getProducto().getCodigo(), favorito.getUsuario().getCodigo() );
 
     }
     @Override
     public void agregarFavorito(FavoritoDTO favoritoDTO) {
         Favorito favorito = new Favorito();
-        favorito.setUsuario(usuarioRepo.findById(favoritoDTO.getUsuario().getCodigo()).orElseThrow(() -> new NotFoundException("Usuario no encontrado")));
-        favorito.setProducto(productoRepo.findById(favoritoDTO.getProducto().getCodigo()).orElseThrow(() -> new NotFoundException("Producto no encontrado")));
+        favorito.setUsuario(usuarioRepo.findById(favoritoDTO.getCodigoUsuario()).orElseThrow(() -> new NotFoundException("Usuario no encontrado")));
+        favorito.setProducto(productoRepo.findById(favoritoDTO.getCodigoProducto()).orElseThrow(() -> new NotFoundException("Producto no encontrado")));
         favoritoRepo.save(favorito);
     }
 

@@ -42,4 +42,24 @@ public class ProductoMapper {
                 .map(ProductoMapper::toDto)
                 .collect(Collectors.toList());
     }
+    public ProductoGetDTO toGetDTO(Producto producto) {
+        ProductoGetDTO dto = new ProductoGetDTO();
+        dto.setCodigo(producto.getCodigo());
+        dto.setEstado(producto.getEstado());
+        dto.setFechaLimite(producto.getFechaLimite());
+        dto.setNombre(producto.getNombre());
+        dto.setDescripcion(producto.getDescripcion());
+        dto.setUnidades(producto.getUnidades());
+        dto.setPrecio(producto.getPrecio());
+        dto.setCalificacion(producto.getCalificacion());
+        dto.setImagenes(producto.getImagenes());
+        dto.setCategorias(producto.getCategorias());
+        return dto;
+    }
+
+    public List<ProductoGetDTO> toGetDTOList(List<Producto> productos) {
+        return productos.stream()
+                .map(this::toGetDTO)
+                .collect(Collectors.toList());
+    }
 }
