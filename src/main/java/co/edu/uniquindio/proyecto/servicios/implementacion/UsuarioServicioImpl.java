@@ -87,7 +87,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
             throw new Exception("El cliente no se encontro con el correo ingresado");
         }
 
-        usuario.setPassword(passwordNueva);
+        usuario.setPassword( passwordEncoder.encode(passwordNueva) );
         usuarioRepo.save(usuario);
 
         return true;

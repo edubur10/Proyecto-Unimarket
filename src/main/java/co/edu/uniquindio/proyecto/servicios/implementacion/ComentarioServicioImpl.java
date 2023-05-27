@@ -127,7 +127,15 @@ public class ComentarioServicioImpl implements ComentarioServicio {
 
     @Override
     public List<ComentarioGetDTO> listarComentarios(int codigoProducto) {
-        return null;
+
+        List<Comentario> lista = comentarioRepo.listarComentarios(codigoProducto);
+        List<ComentarioGetDTO> respuesta = new ArrayList<>();
+
+        for (Comentario comentario : lista) {
+            respuesta.add(convertirGetDTOaComentario(comentario));
+        }
+
+        return respuesta;
     }
 
 }

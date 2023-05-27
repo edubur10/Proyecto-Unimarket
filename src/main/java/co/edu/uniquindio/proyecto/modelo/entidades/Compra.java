@@ -35,6 +35,8 @@ public class Compra implements Serializable {
     @OneToMany(mappedBy = "compra")
     private List<DetalleCompra> detalleCompras;
 
+
+
     /*
     @Builder
     public Compra(LocalDateTime fecha_creacion, Float valor_total, MetodoPago metodo_pago,

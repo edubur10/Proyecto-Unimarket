@@ -50,6 +50,14 @@ public class ProductoControlador {
         return ResponseEntity.status(200).body( new MensajeDTO(HttpStatus.OK, false, productos) );
     }
 
+    @GetMapping("/productos/categoria/{categoria}")
+    public ResponseEntity<MensajeDTO> listarProductosCategoria(@PathVariable Categoria categoria) {
+        List<ProductoGetDTO> productos = productoServicio.listarProductosCategoria(categoria);
+        MensajeDTO<List<ProductoGetDTO>> mensaje = new MensajeDTO<>(HttpStatus.OK, false, productos);
+        return ResponseEntity.ok(mensaje);
+    }
+
+
 
 
 }

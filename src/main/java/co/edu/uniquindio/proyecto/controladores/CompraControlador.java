@@ -23,9 +23,9 @@ public class CompraControlador {
         return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, compraServicio.crearCompra(compraDTO)));
     }
 
-
     @GetMapping("/obtener/{codigo}")
     ResponseEntity<MensajeDTO> obtenerCompra(@PathVariable int codigoCompra) throws Exception{
         return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, compraServicio.obtener(codigoCompra)));
     }
+
 }

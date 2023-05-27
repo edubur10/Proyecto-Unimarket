@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/comentario")
 @AllArgsConstructor
@@ -45,4 +47,10 @@ public class ComentarioControlador {
         return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, comentarioServicio.obtenerComentario(codidoProducto)));
     }
 
+    @GetMapping("/comentarios/{codigoProducto}")
+    ResponseEntity<MensajeDTO<List<ComentarioGetDTO>>> listarComentarios(@PathVariable int codigoProducto) {
+        List<ComentarioGetDTO> comentarios = comentarioServicio.listarComentarios(codigoProducto);
+        MensajeDTO<List<ComentarioGetDTO>> mensaje = new MensajeDTO<>(HttpStatus.OK, false, comentarios);
+        return ResponseEntity.ok(mensaje);
+    }
 }
