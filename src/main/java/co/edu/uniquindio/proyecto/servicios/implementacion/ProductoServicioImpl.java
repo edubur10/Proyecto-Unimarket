@@ -7,12 +7,13 @@ import co.edu.uniquindio.proyecto.repositorios.ProductoRepo;
 import co.edu.uniquindio.proyecto.servicios.interfaces.ProductoServicio;
 import co.edu.uniquindio.proyecto.servicios.interfaces.UsuarioServicio;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import static co.edu.uniquindio.proyecto.modelo.entidades.Estado.INACTIVO;
 
 @Service
 @AllArgsConstructor
@@ -84,11 +85,13 @@ public class ProductoServicioImpl implements ProductoServicio {
     }
 
     @Override
-    public int eliminarProducto(int codigoProducto)  throws Exception
-    {
-        validarExiste(codigoProducto);
+    public int eliminarProducto(int codigoProducto) throws Exception {
 
-        productoRepo.deleteById(codigoProducto);
+        Producto producto = validarExiste(codigoProducto);
+
+        producto.setEstado(INACTIVO); // Cambiar el estado del producto
+
+        productoRepo.save(producto); // Guardar el producto con el nuevo estado
 
         return codigoProducto;
     }
@@ -242,7 +245,7 @@ public class ProductoServicioImpl implements ProductoServicio {
         return respuesta;
     }
 
-    private void validarExiste(int codigoProducto) throws Exception
+    private Producto validarExiste(int codigoProducto) throws Exception
     {
         boolean existe = productoRepo.existsById(codigoProducto);
 
@@ -250,6 +253,7 @@ public class ProductoServicioImpl implements ProductoServicio {
             throw new Exception("El código" +codigoProducto+ "No existe");
         }
 
+        return null;
     }
 
     @Override

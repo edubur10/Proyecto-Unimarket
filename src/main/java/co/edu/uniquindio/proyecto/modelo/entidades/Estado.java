@@ -14,6 +14,7 @@ public enum Estado {
 
     APROBADO,
     RECHAZADO,
-    SIN_REVISAR
+    SIN_REVISAR,
+    INACTIVO
 
 }

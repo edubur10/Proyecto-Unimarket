@@ -16,8 +16,7 @@ public class EmailServicioImpl implements EmailServicio {
     @Autowired
     private JavaMailSender javaMailSender;
 
-    public void enviarEmail (EmailDTO emailDTO)
-    {
+    public void enviarEmail (EmailDTO emailDTO) {
 
         MimeMessage mensaje = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(mensaje);
@@ -32,10 +31,8 @@ public class EmailServicioImpl implements EmailServicio {
             javaMailSender.send(mensaje);
 
 
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 }

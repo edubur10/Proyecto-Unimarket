@@ -2,14 +2,19 @@ package co.edu.uniquindio.proyecto.servicios.implementacion;
 
 import co.edu.uniquindio.proyecto.dto.ComentarioDTO;
 import co.edu.uniquindio.proyecto.dto.ComentarioGetDTO;
+import co.edu.uniquindio.proyecto.dto.EmailDTO;
 import co.edu.uniquindio.proyecto.modelo.entidades.Comentario;
 import co.edu.uniquindio.proyecto.modelo.entidades.Producto;
 import co.edu.uniquindio.proyecto.modelo.entidades.Usuario;
 import co.edu.uniquindio.proyecto.repositorios.ComentarioRepo;
 import co.edu.uniquindio.proyecto.servicios.interfaces.ComentarioServicio;
+import co.edu.uniquindio.proyecto.servicios.interfaces.EmailServicio;
 import co.edu.uniquindio.proyecto.servicios.interfaces.ProductoServicio;
 import co.edu.uniquindio.proyecto.servicios.interfaces.UsuarioServicio;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -25,13 +30,27 @@ public class ComentarioServicioImpl implements ComentarioServicio {
     private final UsuarioServicio usuarioServicio;
     private final ComentarioRepo comentarioRepo;
 
+    @Autowired
+    private JavaMailSender javaMailSender;
+
     @Override
     public int crearComentario(ComentarioDTO comentarioDTO) throws Exception {
 
-        LocalDateTime fecha = LocalDateTime.now();
         Comentario comentario = convertirDTOaComentario(comentarioDTO);
-        comentario.setFecha(fecha);
-        return comentarioRepo.save(comentario).getCodigo();
+        Comentario comentarioGuardado = comentarioRepo.save(comentario);
+
+        // Envío del correo electrónico
+        String destinatario = comentario.getUsuario().getEmail();
+        String asunto = "Nuevo comentario en Unimarket";
+        String mensaje = "Has publicado un nuevo comentario en Unimarket.";
+
+        SimpleMailMessage email = new SimpleMailMessage();
+        email.setTo(destinatario);
+        email.setSubject(asunto);
+        email.setText(mensaje);
+        javaMailSender.send(email);
+
+        return comentarioGuardado.getCodigo();
     }
 
     private Comentario convertirDTOaComentario(ComentarioDTO comentarioDTO) throws Exception {

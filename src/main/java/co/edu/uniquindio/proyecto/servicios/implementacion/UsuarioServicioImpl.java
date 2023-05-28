@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -95,7 +96,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 
     public void enviarLinkRecuperacion(String correo) throws Exception
     {
-        emailServicio.enviarEmail(new EmailDTO("Recuperacion password", "Para recupear la contraseña ingrese a: []", correo) );
+        emailServicio.enviarEmail(new EmailDTO("Recuperacion password", "Para recupear la contraseña ingrese a: []", correo, LocalDateTime.now()) );
     }
 
     private void validarExiste(int codigoUsuario) throws Exception{

@@ -68,4 +68,9 @@ public class FavoritoServiceImpl implements FavoritoService {
         Favorito favorito = favoritoRepo.findById(favoritoDTO.getCodigo()).orElseThrow(() -> new NotFoundException("Favorito no encontrado"));
         favoritoRepo.delete(favorito);
     }
+
+    @Override
+    public void enviarEmailNotificacion(String destinatario, String asunto, String cuerpo) {
+
+    }
 }

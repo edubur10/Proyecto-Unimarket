@@ -2,14 +2,19 @@ package co.edu.uniquindio.proyecto.servicios.implementacion;
 
 import co.edu.uniquindio.proyecto.dto.CompraDTO;
 import co.edu.uniquindio.proyecto.dto.CompraGetDTO;
+import co.edu.uniquindio.proyecto.dto.EmailDTO;
 import co.edu.uniquindio.proyecto.modelo.entidades.Compra;
 import co.edu.uniquindio.proyecto.modelo.entidades.DetalleCompra;
 import co.edu.uniquindio.proyecto.modelo.entidades.Usuario;
 import co.edu.uniquindio.proyecto.repositorios.CompraRepo;
 import co.edu.uniquindio.proyecto.repositorios.DetalleCompraRepo;
 import co.edu.uniquindio.proyecto.servicios.interfaces.CompraServicio;
+import co.edu.uniquindio.proyecto.servicios.interfaces.EmailServicio;
 import co.edu.uniquindio.proyecto.servicios.interfaces.UsuarioServicio;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -27,18 +32,28 @@ public class CompraServicioImpl implements CompraServicio {
 
     private final DetalleCompraRepo detalleCompraRepo;
 
+    @Autowired
+    private JavaMailSender javaMailSender;
+
 
     @Override
     public int crearCompra(CompraDTO compraDTO) throws Exception {
 
-        Compra compra = new Compra();
-        compra.setFecha_creacion(LocalDateTime.now());
-        compra.setValor_total(compra.getValor_total());
-        compra.setMetodo_pago(compraDTO.getMetodoPago());
-        compra.setUsuario(usuarioServicio.obtener(compraDTO.getCodigoUsuario()));
-        compra.setDetalleCompras(compra.getDetalleCompras());
+        Compra compra = convertirCompraDTOaCompra(compraDTO);
+        Compra compraGuardada = compraRepo.save(compra);
 
-        return compraRepo.save(compra).getCodigo();
+        // Envío del correo electrónico
+        String destinatario = compra.getUsuario().getEmail();
+        String asunto = "Nueva compra en Unimarket";
+        String mensaje = "¡Gracias por tu compra en Unimarket! Tu compra con el código " + compraGuardada.getCodigo() + " ha sido realizada con éxito.";
+
+        SimpleMailMessage email = new SimpleMailMessage();
+        email.setTo(destinatario);
+        email.setSubject(asunto);
+        email.setText(mensaje);
+        javaMailSender.send(email);
+
+        return compraGuardada.getCodigo();
     }
 
     @Override

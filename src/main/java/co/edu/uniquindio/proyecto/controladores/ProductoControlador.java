@@ -1,5 +1,6 @@
 package co.edu.uniquindio.proyecto.controladores;
 
+import co.edu.uniquindio.proyecto.dto.FavoritoGetDTO;
 import co.edu.uniquindio.proyecto.dto.MensajeDTO;
 import co.edu.uniquindio.proyecto.dto.ProductoDTO;
 import co.edu.uniquindio.proyecto.dto.ProductoGetDTO;
@@ -57,7 +58,10 @@ public class ProductoControlador {
         return ResponseEntity.ok(mensaje);
     }
 
-
+    @PutMapping("/eliminarProductos/{codigoProducto}")
+    ResponseEntity<MensajeDTO> eliminarProducto(@PathVariable int codigoProducto, @RequestBody ProductoGetDTO productoGetDTO) throws Exception{
+        return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, "el producto se borro correctamente"));
+    }
 
 
 }

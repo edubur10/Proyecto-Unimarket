@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+import static co.edu.uniquindio.proyecto.modelo.entidades.Estado.INACTIVO;
+
 @Service
 @AllArgsConstructor
 public class ModeradorServicioImpl implements ModeradorServicio {
@@ -51,20 +53,29 @@ public class ModeradorServicioImpl implements ModeradorServicio {
 
     @Override
     public void rechazarProducto(int codigoProducto) throws Exception {
-
         Producto producto = productoServicio.obtener(codigoProducto);
-        if (producto!= null){
-            if (!producto.getEstado().equals("INACTIVO")){
-                producto.setEstado(producto.getEstado()); //Preguntar
-            }else {
-                throw new Exception("El producto esta Rechazado");
-            }
+        if (producto != null) {
+            if (!producto.getEstado().equals("INACTIVO")) {
+                producto.setEstado(INACTIVO);
 
-        }else {
-            throw new Exception("producto en el codigo: "+ codigoProducto+ "No se a encontrado");
+                // Envío del correo electrónico
+                String destinatario = producto.getUsuario().getEmail();
+                String asunto = "Producto Unimarket";
+                String mensaje = "Su producto " + producto.getNombre() + " ha sido rechazado.";
+
+                SimpleMailMessage email = new SimpleMailMessage();
+                email.setTo(destinatario);
+                email.setSubject(asunto);
+                email.setText(mensaje);
+                javaMailSender.send(email);
+
+            } else {
+                throw new Exception("El producto está rechazado");
+            }
+        } else {
+            throw new Exception("No se ha encontrado un producto con el código " + codigoProducto);
         }
     }
-
     @Override
     public Moderador obtenerModerador(int codigoModerador) throws Exception {
         Optional<Moderador> moderador = moderadorRepo.findById(codigoModerador);

@@ -16,4 +16,6 @@ public interface FavoritoService {
 
     void eliminarFavorito(FavoritoGetDTO favoritoGetDTO);
 
+    void enviarEmailNotificacion(String destinatario, String asunto, String cuerpo);
+
 }
